@@ -11,16 +11,16 @@ import Foundation
 
 class QiitaAPIClient {
     
-    class var baseUrlString: String { return "https://qiita.com/api/v1" }
+class var baseUrlString: String { return "https://qiita.com/api/v1" }
 
-    class func itemsURL() -> NSURL {
-        return NSURL(string: "\(self.baseUrlString)/items")
-    }
+class func itemsURL() -> NSURL {
+    return NSURL(string: "\(self.baseUrlString)/items")
+}
+
+class func itemsURL(tagName:String) -> NSURL {
     
-    class func itemsURL(tagName:String) -> NSURL {
-        
-        return NSURL(string: "\(self.baseUrlString)/tags/\(tagName)/items")
-    }
+    return NSURL(string: "\(self.baseUrlString)/tags/\(tagName)/items")
+}
 
     class func items(tagName:String, success:((QiitaItemEntity[]) -> Void)!, failure:((NSError?) -> Void)!) {
         
@@ -64,7 +64,7 @@ class QiitaAPIClient {
                         }
                     }
                 
-                    success(items)
+                    success?(items)
                 
                 } else if jsonError {
                     //想定外1（APIサーバーが仕様通りのJSONを返していない）
