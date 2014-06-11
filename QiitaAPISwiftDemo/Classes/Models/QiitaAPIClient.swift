@@ -22,7 +22,7 @@ class func itemsURL(tagName:String) -> NSURL {
     return NSURL(string: "\(self.baseUrlString)/tags/\(tagName)/items")
 }
 
-    class func items(tagName:String, success:((QiitaItemEntity[]) -> Void)!, failure:((NSError?) -> Void)!) {
+    class func items(tagName:String, success:((QiitaItemEntity[]) -> Void)?, failure:((NSError?) -> Void)?) {
         
         let url = itemsURL(tagName)
         let request = NSURLRequest(URL: url)
